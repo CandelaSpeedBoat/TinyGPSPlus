@@ -26,9 +26,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
+#elif defined(FSL_RTOS_FREE_RTOS)
+#include "board.h"
+#include <math.h>
 #else
 #include "WProgram.h"
 #endif
+
 #include <limits.h>
 
 #define _GPS_VERSION "0.92" // software version of this library
