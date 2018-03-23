@@ -245,6 +245,8 @@ public:
   uint32_t failedChecksum()   const { return failedChecksumCount; }
   uint32_t passedChecksum()   const { return passedChecksumCount; }
 
+  bool hasFix() { return gpsHasFix; }
+
 private:
   enum {GPS_SENTENCE_GPGGA, GPS_SENTENCE_GPRMC, GPS_SENTENCE_OTHER};
 
@@ -256,6 +258,7 @@ private:
   uint8_t curTermNumber;
   uint8_t curTermOffset;
   bool sentenceHasFix;
+  bool gpsHasFix;
 
   // custom element support
   friend class TinyGPSCustom;
