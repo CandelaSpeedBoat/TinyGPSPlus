@@ -188,6 +188,11 @@ struct TinyGPSAltitude : TinyGPSDecimal
    float feet()         { return _GPS_FEET_PER_METER * value() / 100.0f; }
 };
 
+struct TinyGPSHDOP : TinyGPSDecimal
+{
+   float hdop() { return value() / 100.0f; }
+};
+
 class TinyGPSPlus;
 class TinyGPSCustom
 {
@@ -229,7 +234,7 @@ public:
   TinyGPSCourse course;
   TinyGPSAltitude altitude;
   TinyGPSInteger satellites;
-  TinyGPSDecimal hdop;
+  TinyGPSHDOP hdop;
 
   static const char *libraryVersion() { return _GPS_VERSION; }
 
