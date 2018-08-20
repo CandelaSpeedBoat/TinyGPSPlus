@@ -36,12 +36,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <limits.h>
 
 #define _GPS_VERSION "0.92" // software version of this library
-#define _GPS_MPH_PER_KNOT 1.15077945
-#define _GPS_MPS_PER_KNOT 0.51444444
-#define _GPS_KMPH_PER_KNOT 1.852
-#define _GPS_MILES_PER_METER 0.00062137112
-#define _GPS_KM_PER_METER 0.001
-#define _GPS_FEET_PER_METER 3.2808399
+#define _GPS_MPH_PER_KNOT 1.15077945f
+#define _GPS_MPS_PER_KNOT 0.51444444f
+#define _GPS_KMPH_PER_KNOT 1.852f
+#define _GPS_MILES_PER_METER 0.00062137112f
+#define _GPS_KM_PER_METER 0.001f
+#define _GPS_FEET_PER_METER 3.2808399f
 #define _GPS_MAX_FIELD_SIZE 15
 
 struct RawDegrees
@@ -169,23 +169,23 @@ private:
 
 struct TinyGPSSpeed : TinyGPSDecimal
 {
-   double knots()    { return value() / 100.0; }
-   double mph()      { return _GPS_MPH_PER_KNOT * value() / 100.0; }
-   double mps()      { return _GPS_MPS_PER_KNOT * value() / 100.0; }
-   double kmph()     { return _GPS_KMPH_PER_KNOT * value() / 100.0; }
+   float knots()    { return value() / 100.0f; }
+   float mph()      { return _GPS_MPH_PER_KNOT * value() / 100.0f; }
+   float mps()      { return _GPS_MPS_PER_KNOT * value() / 100.0f; }
+   float kmph()     { return _GPS_KMPH_PER_KNOT * value() / 100.0f; }
 };
 
 struct TinyGPSCourse : public TinyGPSDecimal
 {
-   double deg()      { return value() / 100.0; }
+   float deg()      { return value() / 100.0f; }
 };
 
 struct TinyGPSAltitude : TinyGPSDecimal
 {
-   double meters()       { return value() / 100.0; }
-   double miles()        { return _GPS_MILES_PER_METER * value() / 100.0; }
-   double kilometers()   { return _GPS_KM_PER_METER * value() / 100.0; }
-   double feet()         { return _GPS_FEET_PER_METER * value() / 100.0; }
+   float meters()       { return value() / 100.0f; }
+   float miles()        { return _GPS_MILES_PER_METER * value() / 100.0f; }
+   float kilometers()   { return _GPS_KM_PER_METER * value() / 100.0f; }
+   float feet()         { return _GPS_FEET_PER_METER * value() / 100.0f; }
 };
 
 class TinyGPSPlus;
@@ -235,7 +235,7 @@ public:
 
   static double distanceBetween(double lat1, double long1, double lat2, double long2);
   static double courseTo(double lat1, double long1, double lat2, double long2);
-  static const char *cardinal(double course);
+  static const char *cardinal(float course);
 
   static int32_t parseDecimal(const char *term);
   static void parseDegrees(const char *term, RawDegrees &deg);
